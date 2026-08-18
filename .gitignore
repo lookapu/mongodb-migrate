@@ -14,3 +14,5 @@ build_venv_app/
 dlq/
 .env
 .mongodb_migrate_gui.json
+.DS_Store
+*.dmg
