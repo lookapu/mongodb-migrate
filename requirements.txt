@@ -1,0 +1,3 @@
+pymongo>=4.6,<5
+tqdm>=4.66,<5
+cryptography>=42,<47

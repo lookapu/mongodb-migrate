@@ -1,0 +1,70 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mongodb-migrate"
+version = "2.0.0"
+description = "All-in-one MongoDB migration, backup, restore and data exchange suite (CLI + GUI)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "lookapu", email = "lookapu@live.cn" }]
+maintainers = [{ name = "lookapu", email = "lookapu@live.cn" }]
+keywords = [
+  "mongodb", "migration", "backup", "restore", "cdc",
+  "change-streams", "data-exchange", "bson", "cli", "devops",
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Console",
+  "Environment :: MacOS X",
+  "Environment :: Win32 (MS Windows)",
+  "Intended Audience :: Developers",
+  "Intended Audience :: System Administrators",
+  "Operating System :: MacOS",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Database",
+  "Topic :: System :: Archiving :: Backup",
+  "Topic :: System :: Systems Administration",
+  "Typing :: Typed",
+]
+dependencies = [
+  "pymongo>=4.6,<5",
+  "tqdm>=4.66,<5",
+  "cryptography>=42,<47",
+]
+
+[project.urls]
+Homepage = "https://github.com/lookapu/mongodb-migrate"
+Repository = "https://github.com/lookapu/mongodb-migrate"
+Documentation = "https://github.com/lookapu/mongodb-migrate#readme"
+Changelog = "https://github.com/lookapu/mongodb-migrate/blob/main/CHANGELOG.md"
+Issues = "https://github.com/lookapu/mongodb-migrate/issues"
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<9", "ruff>=0.5", "pyinstaller>=6,<7", "packaging>=24"]
+
+[project.scripts]
+mongodb-migrate = "mongodb_migrate.cli:main"
+mongodb-migrate-jobs = "mongodb_migrate.jobs:main"
+mongodb-migrate-backup = "mongodb_migrate.backup_cli:main"
+
+[tool.setuptools.packages.find]
+include = ["mongodb_migrate*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+  "integration: requires explicitly configured live MongoDB endpoints",
+]
+
+[tool.ruff]
+line-length = 100
