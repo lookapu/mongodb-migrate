@@ -62,6 +62,7 @@ include = ["mongodb_migrate*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
 markers = [
   "integration: requires explicitly configured live MongoDB endpoints",
 ]
